@@ -11,7 +11,7 @@ Now the client will start sending the TCP segments in the sliding window manner.
 of sending actual segments, the client will send only the TCP sequence numbers to the server. You can
 assume a segment consists of 1024 sequence numbers. On reception of the sequence numbers, the server
 will respond to the client with the corresponding “ACK”. The “ACK” of TCP works in the following manner:
- Markup : * TCP receiver will send an ACK for the next segment that it is expecting and buffers the ones that
+* TCP receiver will send an ACK for the next segment that it is expecting and buffers the ones that
 it has received so far, even if they're out of order. For example, if the receiver has successfully
 received Sequence numbers up to n, it will respond with ACK, having sequence number n+1.
 * If segments are lost, the sender will not retransmit every un-acknowledged segment. Instead, it
