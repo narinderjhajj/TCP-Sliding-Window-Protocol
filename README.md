@@ -32,7 +32,7 @@ The server, on the other hand, will continue receiving the sequence numbers and 
 sequence number. If there is no missing sequence number, the server will consider all the segments until
 that sequence number are received.
 Note: The program should be executed for 10,000,000 segments and maximum sequence number should
-be limited to 2^16.
+be limited to 2<sup>16</sup> .
 
 Output: The server will keep a count of received segments and missing segments. Calculate good-put
 (received segments/sent segments) periodically after every 1000 segments received at the server and
