@@ -5,7 +5,7 @@ separate machines. The TCP client/server will communicate over the network and e
 maintain TCP Sliding window protocol. The server will start in passive mode listening for a
 transmission from the client. The client will then start and contact the server (on a given IP address and
 port number). The client will pass the server an initial string (e.g.: “network”). On receiving a string
-from a client, the server should respond with connection setup “success” message.\
+from a client, the server should respond with connection setup “success” message.
 
 Now the client will start sending the TCP segments in the sliding window manner. For simplicity, instead
 of sending actual segments, the client will send only the TCP sequence numbers to the server. You can
@@ -16,6 +16,7 @@ it has received so far, even if they're out of order. For example, if the receiv
 received Sequence numbers up to n, it will respond with ACK, having sequence number n+1.
 * If segments are lost, the sender will not retransmit every un-acknowledged segment. Instead, it
 just retransmits the oldest un-acknowledged segment.
+
 On receiving an ACK, the client will adjust its sliding window. The sliding window adjustment is guided by
 the following rules:
 * The TCP sliding window will be initialized to 1 segment.
@@ -26,11 +27,13 @@ the maximum value.
 * On detection of any segment loss, the sliding window reduces to half (1/2) of its previous value.
 * After any segment loss, on any successful transmission, the sliding window increases linearly by 1
 segment.
+
 The server, on the other hand, will continue receiving the sequence numbers and keep track of any missing
 sequence number. If there is no missing sequence number, the server will consider all the segments until
 that sequence number are received.
 Note: The program should be executed for 10,000,000 segments and maximum sequence number should
-be limited to 216.
+be limited to 2^16.
+
 Output: The server will keep a count of received segments and missing segments. Calculate good-put
 (received segments/sent segments) periodically after every 1000 segments received at the server and
 report the average good-put. 
